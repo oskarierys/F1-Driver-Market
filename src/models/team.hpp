@@ -42,7 +42,7 @@ public:
 
     // Other methods
     int getAge() const;
-    double getDriverBudgetPercwentage() const;
+    double getDriverBudgetPercentage() const;
 
 private:
     int m_id = -1;
