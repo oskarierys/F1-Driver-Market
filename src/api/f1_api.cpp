@@ -36,3 +36,28 @@ std::vector<DriverPtr> F1Api::fetchDrivers()
     
     return drivers;
 }
+
+std::optional<DriverPtr> F1Api::fetchDriverById(int driverId)
+{
+    try
+    {
+        auto response = sendRequest("/drivers/" + std::to_string(driverId));
+        auto json = parseResponse(response);
+
+        if (json.contains("driver"))
+        {
+            return jsonToDriver(json["driver"]);
+        }
+        else 
+        {
+            spdlog::error("Invalid response format for driver");
+        }
+    }
+    catch(const std::exception& e)
+    {
+        spdlog::error("Error in fetching driver by ID: {}", driverId, e.what());
+    }
+    
+    return std::nullopt;
+}
+
