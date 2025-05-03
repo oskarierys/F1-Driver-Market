@@ -49,6 +49,7 @@ public:
     Status getStatus() const { return m_status; }
 
     // Setters
+    void setId(int id) { m_id = id; }
     void setName(const std::string& name) { m_name = name; }
     void setDateOfBirth(std::chrono::system_clock::time_point dateOfBirth) { m_dateOfBirth = dateOfBirth; }
     void setNationality(const std::string& nationality) { m_nationality = nationality; }
